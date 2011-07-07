@@ -15,7 +15,11 @@ module LaTeX
         "  \u0308  
       }].freeze
 
-      @pattern = /\\(#{ map.keys.map { |k| Regexp.escape(k) }.join('|') })\{([^}]*)\}/ou
+      @patterns = [
+        /\\(#{ map.keys.map { |k| Regexp.escape(k) }.join('|') })\{(\p{L}\p{M}*)\}/ou,
+        /\\(#{ map.keys.map { |k| Regexp.escape(k) }.join('|') })(\p{L}\p{M}*)/ou
+      ].freeze
+      
     end
 
   end

@@ -209,9 +209,13 @@ module LaTeX
         tone3             \u02E7
         tone2             \u02E8
         tone1             \u02E9
+        ss                ß
       }].freeze
 
-      @pattern = /\\(#{ map.keys.map { |k| Regexp.escape(k) }.join('|') })(?:\{\}|\s+|\b)/ou
+      @patterns = [
+        /\\(#{ map.keys.map { |k| Regexp.escape(k) }.join('|') })(?:\{\}|\s+|\b)/ou
+      ].freeze
+      
     end
 
   end

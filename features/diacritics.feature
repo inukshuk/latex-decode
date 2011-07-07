@@ -10,7 +10,7 @@ Feature: Decode LaTeX diacritics
 		| latex   | unicode | description                                  |
 		| \\~{}   | ~       |                                              |
 		| \\\`{o} | ò       | grave accent                                 |
-		| \\'{o}  | ó       | acute accent                                 |
+		| \\\'{o} | ó       | acute accent                                 |
 		| \\^{o}  | ô       | circumflex                                   |
 		| \\"{o}  | ö       | umlaut or dieresis                           |
 		| \\H{o}  | ő       | long Hungarian umlaut (double acute)         |

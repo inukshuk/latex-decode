@@ -4,7 +4,8 @@ module LaTeX
   module Decode
     
     class Punctuation < Decoder
-      @map = Hash[*%W{
+      
+      @macros = Hash[*%W{
         textendash         \u2013
         textemdash         \u2014
         textquoteleft      \u2018
@@ -28,7 +29,21 @@ module LaTeX
         rangle             \u27E9
       }].freeze
 
-      @pattern = /\\(#{ map.keys.map { |k| Regexp.escape(k) }.join('|') })(?:\{\}|\s+|\b)/ou
+      @symbols = Hash[*%w[
+        -     -
+        --    –
+        ---   —
+      ]].freeze
+
+      @map = @macros.merge(@symbols).freeze
+      
+      @patterns = [
+        /\\(#{ @macros.keys.map { |k| Regexp.escape(k) }.compact.join('|') })(?:\{\}|\s+|\b)/ou,
+        /(-+)/,
+        /()\\([$%#_])(\{\})?/,
+        /()\\(~)\{\}/
+      ].freeze
+      
     end
 
   end

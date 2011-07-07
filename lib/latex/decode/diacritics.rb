@@ -4,7 +4,7 @@ module LaTeX
   module Decode
     
     class Diacritics < Decoder
-      @map = Hash[*%W{
+      @macros = Hash[*%W{
         r \u030A
         H \u030B
         u \u0306
@@ -19,7 +19,16 @@ module LaTeX
         t \u0311
       }].freeze
 
-      @pattern = /\\(#{ map.keys.map { |k| Regexp.escape(k) }.join('|') })\{([^}]*)\}/ou
+      @map = @macros.merge(Hash[*%w{
+        l ł
+        L Ł
+      }]).freeze
+      
+      @patterns = [
+        /\\(#{ @macros.keys.map { |k| Regexp.escape(k) }.join('|') })\{(\p{L}\p{M}*)\}/ou,
+        /\\(l)\b/i
+      ].freeze
+      
     end
     
   end

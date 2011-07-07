@@ -3,25 +3,24 @@
 require 'unicode'
 
 require 'latex/decode/version'
-require 'latex/decode/decoder'
+require 'latex/decode/base'
 
 module LaTeX
   
-  module Decode
-    autoload :Accents, 'latex/decode/accents'
-    autoload :Diacritics, 'latex/decode/diacritics'
-    autoload :Punctuation, 'latex/decode/punctuation'
-    autoload :Symbols, 'latex/decode/symbols'
-  end
-
   class << self
     def decode (string)
       return string unless string.is_a? String
 
+      string = string.dup
+      
+      Decode::Base.normalize(string)
+      
       Decode::Accents.decode!(string)
       Decode::Diacritics.decode!(string)
       Decode::Punctuation.decode!(string)
       Decode::Symbols.decode!(string)
+      
+      Decode::Base.strip_braces(string)
       
       Unicode::normalize_C(string)
     end

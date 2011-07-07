@@ -9,7 +9,7 @@ Feature: Decode LaTeX diacritics
 	Scenarios: Diacritics
 		| latex   | unicode | description                                  |
 		| \\~{}   | ~       |                                              |
-		| \\`{o}  | ò       | grave accent                                 |
+		| \\\`{o} | ò       | grave accent                                 |
 		| \\'{o}  | ó       | acute accent                                 |
 		| \\^{o}  | ô       | circumflex                                   |
 		| \\"{o}  | ö       | umlaut or dieresis                           |
@@ -19,7 +19,7 @@ Feature: Decode LaTeX diacritics
 		| \\k{a}  | ą       | ogonek                                       |
 		| \\l     | ł       | l with stroke                                |
 		| \\={o}  | ō       | macron accent (a bar over the letter)        |
-		| \\b{o}  | o       | bar under the letter                         |
+		| \\b{o}  | o̱       | bar under the letter                         |
 		| \\.{o}  | ȯ       | dot over the letter                          |
 		| \\d{u}  | ụ       | dot under the letter                         |
 		| \\r{a}  | å       | ring over the letter                         |

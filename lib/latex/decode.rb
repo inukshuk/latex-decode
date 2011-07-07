@@ -4,18 +4,24 @@ require 'unicode'
 
 require 'latex/decode/version'
 require 'latex/decode/decoder'
-require 'latex/decode/accents'
-require 'latex/decode/diacritics'
 
 module LaTeX
+  
+  module Decode
+    autoload :Accents, 'latex/decode/accents'
+    autoload :Diacritics, 'latex/decode/diacritics'
+    autoload :Punctuation, 'latex/decode/punctuation'
+  end
+
   class << self
     def decode (string)
       return string unless string.is_a? String
 
       Decode::Accents.decode!(string)
       Decode::Diacritics.decode!(string)
+      Decode::Punctuation.decode!(string)
       
-      string
+      Unicode::normalize_C(string)
     end
   end
 end

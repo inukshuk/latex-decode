@@ -9,7 +9,7 @@ module LaTeX
         end
         
         def decode! (string)
-          string.gsub!(pattern) { |m| Unicode::normalize_C([$2,map[$1]].compact.join) }
+          string.gsub!(pattern) { |m| [$2,map[$1]].compact.join }
         end
 
       end

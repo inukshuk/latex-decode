@@ -28,10 +28,8 @@ Gem::Specification.new do |s|
   s.executables  = []
   s.require_path = 'lib'
 
-  s.has_rdoc         = true
   s.rdoc_options     = %w{--line-numbers --inline-source --title "LaTeX-Decode Documentation" --main README.md --webcvs=http://github.com/inukshuk/latex-decode/tree/master/}
   s.extra_rdoc_files = %w{README.md LICENSE}
-  
 end
 
 # vim: syntax=ruby

@@ -12,14 +12,10 @@ module LaTeX
     def decode (string)
       return string unless string.is_a? String
 
-      puts string
       Decode::Accents.decode!(string)
-      puts string
       Decode::Diacritics.decode!(string)
-      puts string
       
       string
-      # Unicode::normalize_C(string) 
     end
   end
 end

@@ -5,3 +5,5 @@ Feature: Decode LaTeX umlauts
 	Scenario: German umlauts
 		When I decode the string '\"a\"o\"u'
 		Then the result should be 'äöü'
+		When I decode the string '\"A\"O\"U'
+		Then the result should be 'ÄÖÜ'

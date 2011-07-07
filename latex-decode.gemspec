@@ -18,6 +18,8 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = '>= 1.3.6'
   s.rubyforge_project = s.name
 
+  s.add_runtime_dependency('unicode', '>= 0.4')
+
   s.add_development_dependency('bundler', '>= 1.0')
   s.add_development_dependency('rdoc', '>= 3.6')
   s.add_development_dependency('rspec', '>= 2.6')

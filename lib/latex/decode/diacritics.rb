@@ -19,7 +19,7 @@ module LaTeX
         t \u0311
       }].freeze
 
-      @pattern = /\\(#{ map.keys.join('|') })\{([^}]*)\}/ou
+      @pattern = /\\(#{ map.keys.map { |k| Regexp.escape(k) }.join('|') })\{([^}]*)\}/ou
     end
     
   end

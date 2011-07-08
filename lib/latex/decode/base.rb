@@ -27,7 +27,7 @@ module LaTeX
         def decode! (string)
           puts name unless patterns
           patterns.each do |pattern|
-            string.gsub!(pattern) { |m| [$2,map[$1]].compact.join }
+            string.gsub!(pattern) { |m| [$2,map[$1],$3].compact.join }
           end
           string
         end

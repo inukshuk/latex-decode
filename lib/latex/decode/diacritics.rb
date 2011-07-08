@@ -16,7 +16,7 @@ module LaTeX
         k \u0328
         b \u0331
         B \u0335
-        t \u0311
+        t \u0361
       }.map { |s| LaTeX.to_unicode(s) }].freeze
 
       @map = @macros.merge(Hash[*%w{
@@ -26,10 +26,10 @@ module LaTeX
       
       @patterns = [
         ruby_18 {
-          /\\(#{ @macros.keys.map { |k| Regexp.escape(k) }.join('|') })\{([[:alpha:]]*)\}/ou          
+          /\\(#{ @macros.keys.map { |k| Regexp.escape(k) }.join('|') })\{([[:alpha:]]?)([[:alpha:]]*)\}/ou          
         } ||
         ruby_19 {
-          /\\(#{ @macros.keys.map { |k| Regexp.escape(k) }.join('|') })\{(\p{L}\p{M}*)\}/ou
+          /\\(#{ @macros.keys.map { |k| Regexp.escape(k) }.join('|') })\{(\p{L}\p{M}*)([[:alpha:]]*)\}/ou
         },
         /\\(l)\b/i
       ].freeze

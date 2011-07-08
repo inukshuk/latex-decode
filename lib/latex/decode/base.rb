@@ -39,7 +39,7 @@ module LaTeX
       module_function
       
       def normalize (string)
-        string.gsub!(/\\(?:i|j)\b/, { '\\i' => 'ı', '\\j' => 'ȷ' })
+        string.gsub!(/\\(?:i|j)\b/) { |m| m == '\\i' ? 'ı' : 'ȷ' }
         string.gsub!(/(\\[a-zA-Z]+)\\(\s+)/, '\1{}\2') # \foo\ bar -> \foo{} bar
         string.gsub!(/([^{]\\\w)([;,.:%])/, '\1{}\2')  #} Aaaa\o, -> Aaaa\o{},        
         string

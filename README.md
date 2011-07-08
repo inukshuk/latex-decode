@@ -45,7 +45,8 @@ Credits
 Thanks to all [contributors](https://github.com/inukshuk/latex-decode/contributors)
 to LaTeX::Decode.
 
-Copyright (C) 2011 [Sylvester Keil](sylvester.keil.or.at);
+Copyright (C) 2011 [Sylvester Keil](sylvester.keil.or.at)
+
 Copyright (C) 2010 François Charette
 
 This program is free software: you can redistribute it and/or modify

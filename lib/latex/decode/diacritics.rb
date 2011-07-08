@@ -17,7 +17,7 @@ module LaTeX
         b \u0331
         B \u0335
         t \u0311
-      }].freeze
+      }.map { |s| LaTeX.to_unicode(s) }].freeze
 
       @map = @macros.merge(Hash[*%w{
         l ł
@@ -25,7 +25,12 @@ module LaTeX
       }]).freeze
       
       @patterns = [
-        /\\(#{ @macros.keys.map { |k| Regexp.escape(k) }.join('|') })\{(\p{L}\p{M}*)\}/ou,
+        ruby_18 {
+          /\\(#{ @macros.keys.map { |k| Regexp.escape(k) }.join('|') })\{([[:alpha:]]*)\}/ou          
+        } ||
+        ruby_19 {
+          /\\(#{ @macros.keys.map { |k| Regexp.escape(k) }.join('|') })\{(\p{L}\p{M}*)\}/ou
+        },
         /\\(l)\b/i
       ].freeze
       

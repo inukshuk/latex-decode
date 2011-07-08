@@ -20,6 +20,7 @@
 require 'unicode'
 
 require 'latex/decode/version'
+require 'latex/decode/compatibility'
 require 'latex/decode/base'
 
 module LaTeX

@@ -13,10 +13,8 @@ Gem::Specification.new do |s|
   s.homepage    = 'http://github.com/inukshuk/latex-decode'
   s.summary     = 'Decodes LaTeX to Unicode.'
   s.description = 'Decodes strings formatted in LaTeX to equivalent Unicode strings.'
+  s.license     = 'GPL-3'
   s.date        = Time.now
-
-  s.required_rubygems_version = '>= 1.3.6'
-  s.rubyforge_project = s.name
 
   s.add_runtime_dependency('unicode', '>= 0.4')
 
@@ -31,7 +29,7 @@ Gem::Specification.new do |s|
   s.executables  = []
   s.require_path = 'lib'
 
-  s.rdoc_options     = %w{--line-numbers --inline-source --title "LaTeX-Decode Documentation" --main README.md --webcvs=http://github.com/inukshuk/latex-decode/tree/master/}
+  s.rdoc_options     = %w{--line-numbers --inline-source --title "LaTeX-Decode\ Documentation" --main README.md --webcvs=http://github.com/inukshuk/latex-decode/tree/master/}
   s.extra_rdoc_files = %w{README.md LICENSE}
 end
 

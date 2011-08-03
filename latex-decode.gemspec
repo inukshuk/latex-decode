@@ -9,20 +9,19 @@ Gem::Specification.new do |s|
   s.version     = LaTeX::Decode::VERSION.dup
   s.platform    = Gem::Platform::RUBY
   s.authors     = ['Sylvester Keil']
-  s.email       = 'http://sylvester.keil.or.at'
+  s.email       = ['http://sylvester.keil.or.at']
   s.homepage    = 'http://github.com/inukshuk/latex-decode'
   s.summary     = 'Decodes LaTeX to Unicode.'
   s.description = 'Decodes strings formatted in LaTeX to equivalent Unicode strings.'
   s.license     = 'GPL-3'
-  s.date        = Time.now
 
-  s.add_runtime_dependency('unicode', '>= 0.4')
+  s.add_runtime_dependency('unicode', '~> 0.4')
 
-  s.add_development_dependency('rake', '>= 0.8')
-  s.add_development_dependency('bundler', '>= 1.0')
-  s.add_development_dependency('rdoc', '>= 3.6')
-  s.add_development_dependency('rspec', '>= 2.6')
-  s.add_development_dependency('cucumber', ">= 0.10")
+  s.add_development_dependency('rake', '~> 0.8')
+  s.add_development_dependency('bundler', '~> 1.0')
+  s.add_development_dependency('rdoc', '~> 3.6')
+  s.add_development_dependency('rspec', '~> 2.6')
+  s.add_development_dependency('cucumber', "~> 1.0")
 
   s.files        = `git ls-files`.split("\n")
   s.test_files   = `git ls-files -- {test,spec,features}/*`.split("\n")

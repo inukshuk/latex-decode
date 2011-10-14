@@ -36,3 +36,8 @@ Feature: Decode LaTeX punctuation directives
 		| -       | -       | hyphen      |
 		| --      | –       | en-dash     |
 		| ---     | —       | em-dash     |
+
+	Scenarios: Quotation marks
+  	| latex   | unicode | description         |
+	  | ``      | “       | left double quotes  |
+		| ''      | ”       | right double quotes |

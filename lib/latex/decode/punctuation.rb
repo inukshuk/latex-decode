@@ -33,13 +33,15 @@ module LaTeX
         -     -
         --    –
         ---   —
+        ``    “
+        ''    ”
       ]].freeze
 
       @map = @macros.merge(@symbols).freeze
       
       @patterns = [
         /\\(#{ @macros.keys.map { |k| Regexp.escape(k) }.compact.join('|') })(?:\{\}|\s+|\b)/ou,
-        /(-+)/,
+        /(-+|``|'')/,
         /()\\([$%#_])(\{\})?/,
         /()\\(~)\{\}/
       ].freeze

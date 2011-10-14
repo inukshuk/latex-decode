@@ -27,9 +27,9 @@ module LaTeX
   
   class << self
     def decode (string)
-      return string unless string.is_a? String
+      return string unless string.respond_to?(:to_s)
 
-      string = string.dup
+      string = string.is_a?(String) ? string.dup : string.to_s
       
       Decode::Base.normalize(string)
       

@@ -41,3 +41,5 @@ Feature: Decode LaTeX punctuation directives
   	| latex   | unicode | description         |
 	  | ``      | “       | left double quotes  |
 		| ''      | ”       | right double quotes |
+	  | `       | ‘       | left single quotes  |
+		| '       | ’       | right single quotes |

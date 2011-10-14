@@ -18,6 +18,7 @@ Feature: Decode LaTeX diacritics
 		| \\c{c}  | ç       | cedilla                                      |
 		| \\k{a}  | ą       | ogonek                                       |
 		| \\l     | ł       | l with stroke                                |
+		| \\L     | Ł       | l with stroke                                |
 		| \\={o}  | ō       | macron accent (a bar over the letter)        |
 		| \\b{o}  | o̱       | bar under the letter                         |
 		| \\.{o}  | ȯ       | dot over the letter                          |
@@ -26,4 +27,10 @@ Feature: Decode LaTeX diacritics
 		| \\u{o}  | ŏ       | breve over the letter                        |
 		| \\v{s}  | š       | caron/hacek ("v") over the letter            |
 		| \\t{oo} | o͡o     | "tie" (inverted u) over the two letters      |
-		
+		| \\aa    | å       | ring over the letter a                       |
+		| \\AA    | Å       | ring over the letter A                       |
+		| \\o     | ø       | slashed o                                    |
+		| \\O     | Ø       | slashed O                                    |
+		| \\ae    | æ       | ae                                           |
+		| \\AE    | Æ       | AE                                           |
+	

@@ -20,8 +20,14 @@ module LaTeX
       }.map { |s| LaTeX.to_unicode(s) }].freeze
 
       @map = @macros.merge(Hash[*%w{
-        l ł
-        L Ł
+        l  ł
+        L  Ł
+        o  ø
+        O  Ø
+        AA Å
+        aa å
+        AE Æ
+        ae æ
       }]).freeze
       
       @patterns = [
@@ -31,7 +37,7 @@ module LaTeX
         ruby_19 {
           /\\(#{ @macros.keys.map { |k| Regexp.escape(k) }.join('|') })\{(\p{L}\p{M}*)([[:alpha:]]*)\}/ou
         },
-        /\\(l)\b/i
+        /\\(o|O|l|L|aa|AA|ae|AE)\b/,
       ].freeze
       
     end

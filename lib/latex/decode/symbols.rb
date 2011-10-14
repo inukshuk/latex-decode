@@ -210,6 +210,7 @@ module LaTeX
         tone2             ˨
         tone1             ˩
         ss                ß
+        ,                 \u2009
       }].freeze
 
       @patterns = [

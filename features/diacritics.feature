@@ -16,11 +16,16 @@ Feature: Decode LaTeX diacritics
 		| \\H{o}  | ő       | long Hungarian umlaut (double acute)         |
 		| \\~{o}  | õ       | tilde                                        |
 		| \\c{c}  | ç       | cedilla                                      |
+		| \\c c   | ç       |                                              |
+		| \\c cb  | çb      |                                              |
+		| \\c {cb}| çb      |                                              |
+		| \\c C   | Ç       |                                              |
+		| {\\c c} | ç       |                                              |
 		| \\k{a}  | ą       | ogonek                                       |
 		| \\l     | ł       | l with stroke                                |
 		| \\L     | Ł       | l with stroke                                |
 		| \\={o}  | ō       | macron accent (a bar over the letter)        |
-		| \\b{o}  | o̱       | bar under the letter                         |
+		| \\b{o}  | o̱      | bar under the letter                         |
 		| \\.{o}  | ȯ       | dot over the letter                          |
 		| \\d{u}  | ụ       | dot under the letter                         |
 		| \\r{a}  | å       | ring over the letter                         |

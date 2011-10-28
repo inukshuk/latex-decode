@@ -49,9 +49,6 @@ module LaTeX
 
 				# \c cb -> \c{cb}
 				string.gsub!(/(\\[^\sij])\s+([[:alpha:]]+)\b/i, '\1{\2}')
-
-				# \c {cb} -> \c{cb}
-				string.gsub!(/(\\[^\sij])\s+(\{[^\}]*\})/i, '\1\2')
 				
         string
       end

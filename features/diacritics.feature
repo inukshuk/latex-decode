@@ -18,7 +18,7 @@ Feature: Decode LaTeX diacritics
 		| \\c{c}  | ç       | cedilla                                      |
 		| \\c c   | ç       |                                              |
 		| \\c cb  | çb      |                                              |
-		| \\c {cb}| çb      |                                              |
+		| \\c {cb}| \\c cb  |                                              |
 		| \\c C   | Ç       |                                              |
 		| {\\c c} | ç       |                                              |
 		| \\k{a}  | ą       | ogonek                                       |

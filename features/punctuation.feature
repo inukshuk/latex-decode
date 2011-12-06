@@ -2,12 +2,12 @@ Feature: Decode LaTeX punctuation directives
   As a hacker who works with LaTeX
   I want to be able to decode LaTeX punctuation marks
 
-	Scenario Outline: LaTeX to Unicode transformation
-		When I decode the string '<latex>'
-		Then the result should be '<unicode>'
+  Scenario Outline: LaTeX to Unicode transformation
+    When I decode the string '<latex>'
+    Then the result should be '<unicode>'
 
-	Scenarios: Punctuation macros
-		| latex                | unicode |
+  Scenarios: Punctuation macros
+    | latex                | unicode |
     | \\textendash         | –       |
     | \\textemdash         | —       |
     | \\textquoteleft      | ‘       |
@@ -31,15 +31,15 @@ Feature: Decode LaTeX punctuation directives
     | \\rangle             | ⟩       |
 
 
-	Scenarios: Punctuation symbols
-		| latex   | unicode | description |
-		| -       | -       | hyphen      |
-		| --      | –       | en-dash     |
-		| ---     | —       | em-dash     |
+  Scenarios: Punctuation symbols
+    | latex   | unicode | description |
+    | -       | -       | hyphen      |
+    | --      | –       | en-dash     |
+    | ---     | —       | em-dash     |
 
-	Scenarios: Quotation marks
-  	| latex   | unicode | description         |
-	  | ``      | “       | left double quotes  |
-		| ''      | ”       | right double quotes |
-	  | `       | ‘       | left single quotes  |
-		| '       | ’       | right single quotes |
+  Scenarios: Quotation marks
+    | latex   | unicode | description         |
+    | ``      | “       | left double quotes  |
+    | ''      | ”       | right double quotes |
+    | `       | ‘       | left single quotes  |
+    | '       | ’       | right single quotes |

@@ -5,7 +5,7 @@ module LaTeX
     
     class Punctuation < Decoder
       
-      @macros = Hash[*%W{
+      @macros = Hash[*%w{
         textendash         –
         textemdash         —
         textquoteleft      ‘
@@ -27,6 +27,7 @@ module LaTeX
         textoverline       ‾
         langle             ⟨
         rangle             ⟩
+        &                  &
       }].freeze
 
       @symbols = Hash[*%w[
@@ -42,7 +43,7 @@ module LaTeX
       @map = @macros.merge(@symbols).freeze
       
       @patterns = [
-        /\\(#{ @macros.keys.map { |k| Regexp.escape(k) }.compact.join('|') })(?:\{\}|\s+|\b)/ou,
+        /\\(#{ @macros.keys.map { |k| Regexp.escape(k) }.compact.join('|') })(?:\{\}|\s+|\b|$)/ou,
         /(-+|`{1,2}|'{1,2})/,
         /()\\([$%#_])(\{\})?/,
         /()\\(~)\{\}/

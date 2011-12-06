@@ -29,7 +29,6 @@ Feature: Decode LaTeX punctuation directives
     | \\textoverline       | ‾       |
     | \\langle             | ⟨       |
     | \\rangle             | ⟩       |
-    | \\\&                 | &       |
 
 
   Scenarios: Punctuation symbols

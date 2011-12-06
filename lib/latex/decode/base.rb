@@ -48,7 +48,7 @@ module LaTeX
         string.gsub!(/([^{]\\\w)([;,.:%])/, '\1{}\2')
 
 				# \c cb -> \c{cb}
-				string.gsub!(/(\\[^\sij])\s+([[:alpha:]]+)\b/i, '\1{\2}')
+				string.gsub!(/(\\[^\sij&#\$\{\}_~%])\s+([[:alpha:]]+)\b/i, '\1{\2}')
 				
         string
       end

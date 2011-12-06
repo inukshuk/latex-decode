@@ -27,7 +27,8 @@ module LaTeX
         textoverline       ‾
         langle             ⟨
         rangle             ⟩
-        &                  &
+        textasciicircum    ^
+        textbackslash      \\
       }].freeze
 
       @symbols = Hash[*%w[
@@ -45,7 +46,7 @@ module LaTeX
       @patterns = [
         /\\(#{ @macros.keys.map { |k| Regexp.escape(k) }.compact.join('|') })(?:\{\}|\s+|\b|$)/ou,
         /(-+|`{1,2}|'{1,2})/,
-        /()\\([$%#_])(\{\})?/,
+        /()\\([$%#_&])(\{\})?/,
         /()\\(~)\{\}/
       ].freeze
       

@@ -23,6 +23,11 @@ require 'latex/decode/version'
 require 'latex/decode/compatibility'
 require 'latex/decode/base'
 
+require 'latex/decode/accents'
+require 'latex/decode/diacritics'
+require 'latex/decode/punctuation'
+require 'latex/decode/symbols'
+
 module LaTeX
   
   class << self

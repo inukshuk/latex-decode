@@ -2,12 +2,7 @@
 
 module LaTeX
   module Decode
-    
-    autoload :Accents, 'latex/decode/accents'
-    autoload :Diacritics, 'latex/decode/diacritics'
-    autoload :Punctuation, 'latex/decode/punctuation'
-    autoload :Symbols, 'latex/decode/symbols'
-    
+        
     class Decoder
       class << self
         attr_reader :patterns, :map
@@ -48,7 +43,7 @@ module LaTeX
         string.gsub!(/([^{]\\\w)([;,.:%])/, '\1{}\2')
 
 				# \c cb -> \c{cb}
-				string.gsub!(/(\\[^\sij&#\$\{\}_~%])\s+([[:alpha:]]+)\b/i, '\1{\2}')
+        string.gsub!(/(\\[^\sij&#\$\{\}_~%])\s+([[:alpha:]]+)\b/i, '\1{\2}')
 				
         string
       end

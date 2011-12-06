@@ -4,7 +4,7 @@ module LaTeX
   module Decode
     
     class Symbols < Decoder
-      @map = Hash[*%W{
+      @map = Hash[*%w{
         textcolonmonetary ₡
         textlira          ₤
         textnaira         ₦

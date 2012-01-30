@@ -8,7 +8,6 @@ Feature: Decode LaTeX diacritics
 
 	Scenarios: Diacritics
 		| latex   | unicode | description                                  |
-		| \\~{}   | ~       |                                              |
 		| \\\`{o} | ò       | grave accent                                 |
 		| \\\'{o} | ó       | acute accent                                 |
 		| \\^{o}  | ô       | circumflex                                   |

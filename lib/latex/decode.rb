@@ -17,8 +17,6 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #++
 
-require 'unicode'
-
 require 'latex/decode/version'
 require 'latex/decode/compatibility'
 require 'latex/decode/base'
@@ -45,7 +43,7 @@ module LaTeX
       
       Decode::Base.strip_braces(string)
       
-      Unicode::normalize_C(string)
+      LaTeX.normalize_C(string)
     end
   end
 end

@@ -15,6 +15,6 @@ Feature: Decode LaTeX special characters
     | \\{                  | {       |
     | \\}                  | }       |
     | \\_                  | _       |
-    | \\~{}                | ~       |
+    | \\textasciitilde{}   | ~       |
     | \\textbackslash{}    | \\      |
     | \\textasciicircum{}  | ^       |

@@ -15,8 +15,6 @@ Gem::Specification.new do |s|
   s.description = 'Decodes strings formatted in LaTeX to equivalent Unicode strings.'
   s.license     = 'GPL-3'
 
-  s.add_runtime_dependency('unicode', '~> 0.4')
-
   s.add_development_dependency('rake', '~> 0.8')
   s.add_development_dependency('bundler', '~> 1.0')
   s.add_development_dependency('rdoc', '~> 3.6')

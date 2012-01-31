@@ -30,7 +30,12 @@ if RUBY_PLATFORM == 'java'
   end
   
 else
-  require 'unicode'
+	
+	begin
+  	require 'unicode'
+	rescue LoadError
+		fail "Failed to load unicode normalizer: please gem install unicode"
+	end
   
   module LaTeX
     def self.normalize_C(string)

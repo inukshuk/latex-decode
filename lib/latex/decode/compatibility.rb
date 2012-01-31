@@ -19,3 +19,23 @@ else
   def ruby_18; false; end
   def ruby_19; yield; end
 end
+
+if RUBY_PLATFORM == 'java'
+  require 'java'
+  
+  module LaTeX
+    def self.normalize_C(string)
+      java.text.Normalizer.normalize(string, java.text.Normalizer::Form::NFC).to_s
+    end
+  end
+  
+else
+  require 'unicode'
+  
+  module LaTeX
+    def self.normalize_C(string)
+      Unicode::normalize_C(string)
+    end
+  end
+  
+end

@@ -29,6 +29,7 @@ module LaTeX
         rangle             ⟩
         textasciicircum    ^
         textbackslash      \\
+        textasciitilde     ~
       }].freeze
 
       @symbols = Hash[*%w[

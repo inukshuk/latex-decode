@@ -17,7 +17,7 @@ module LaTeX
 
       @patterns = [
         ruby_18 {
-          /\\(#{ map.keys.map { |k| Regexp.escape(k) }.join('|') })\{([[:alpha:]]*)\}/ou          
+          /\\(#{ map.keys.map { |k| Regexp.escape(k) }.join('|') })\{([[:alpha:]]+)\}/ou
         } ||
         ruby_19 {
           /\\(#{ map.keys.map { |k| Regexp.escape(k) }.join('|') })\{(\p{L}\p{M}*)\}/ou

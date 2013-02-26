@@ -1,4 +1,4 @@
-source :rubygems
+source 'https://rubygems.org'
 gemspec
 
 group :development do
@@ -6,5 +6,6 @@ group :development do
 	gem 'ruby-debug', :platforms => [:mri_18]
 end
 
+gem 'rake', :groups => [:test, :development]
 
 gem 'unicode', '~> 0.4', :platforms => [:mri, :rbx, :mswin, :mingw]

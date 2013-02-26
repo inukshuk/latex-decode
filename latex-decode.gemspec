@@ -21,9 +21,7 @@ Gem::Specification.new do |s|
     s.platform    = 'ruby'
   end
 
-  s.add_development_dependency('rake', '~> 0.8')
   s.add_development_dependency('bundler', '~> 1.0')
-  s.add_development_dependency('rdoc', '~> 3.6')
   s.add_development_dependency('rspec', '~> 2.6')
   s.add_development_dependency('cucumber', "~> 1.0")
 

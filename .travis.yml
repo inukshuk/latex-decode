@@ -16,3 +16,7 @@ notifications:
     - sk@semicolon.at
   on_success: change
   on_failure: always
+matrix:
+  allow_failures:
+    rvm:
+      - rbx-18mode

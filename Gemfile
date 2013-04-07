@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 gemspec
 
-
 group :test do
   gem 'rake'
   gem 'rspec', '~> 2.13'
@@ -14,3 +13,5 @@ group :debug do
 end
 
 gem 'unicode', '~> 0.4', :platforms => [:mri, :rbx, :mswin, :mingw]
+
+gem 'ritex', '~> 1.0.1'

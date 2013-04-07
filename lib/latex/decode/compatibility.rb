@@ -14,8 +14,8 @@ else
 
   module LaTeX
     def self.to_unicode(string)
-			string
-		end
+      string
+    end
   end
 
   def ruby_18; false; end
@@ -33,9 +33,8 @@ if RUBY_PLATFORM == 'java'
   end
   
 else
-
-	begin
-  	require 'unicode'
+  begin
+    require 'unicode'
 
     # Use the Unicode gem
     module LaTeX
@@ -43,7 +42,7 @@ else
         Unicode::normalize_C(string)
       end
     end
-	rescue LoadError
+  rescue LoadError
     begin
       require 'active_support/multibyte/chars'
       
@@ -54,8 +53,37 @@ else
         end
       end
     rescue LoadError
-  		fail "Failed to load unicode normalizer: please gem install unicode (or active_support)"
+      fail "Failed to load unicode normalizer: please gem install unicode (or active_support)"
     end
-	end
+  end
+end
 
+module LaTeX
+  begin
+    require 'ritex'
+
+    def self.ritex
+      Ritex::Parser.new(:mathml)
+    end
+
+    def self.to_math_ml(string)
+      ritex.parse string, :nowrap => true, :display => false
+    end
+
+  rescue LoadError
+    begin
+      require 'math_ml'
+      
+      def self.to_math_ml(string)
+        MathML::String.mathml_latex_parser.parse(string, false)
+      end
+
+    rescue LoadError
+      # No MathML conversion
+
+      def self.to_math_ml(string)
+        string
+      end
+    end
+  end
 end

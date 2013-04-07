@@ -1,6 +1,6 @@
 Feature: Keep non-LaTeX markup as it is
   As a hacker who works with LaTeX
-  I want to be preserve non-LaTeX text as it is
+  I want to preserve non-LaTeX text as it is
 
   Scenario: Standalone escape characters
     When I decode the string '\\'

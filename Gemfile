@@ -1,11 +1,16 @@
 source 'https://rubygems.org'
 gemspec
 
-group :development do
-	gem 'ruby-debug19', :require => 'ruby-debug', :platforms => [:mri_19]
-	gem 'ruby-debug', :platforms => [:mri_18]
+
+group :test do
+  gem 'rake'
+  gem 'rspec', '~> 2.13'
+  gem 'cucumber', '~> 1.2'
 end
 
-gem 'rake', :groups => [:test, :development]
+group :debug do
+	gem 'debugger', :platforms => [:mri_19, :mri_20]
+	gem 'ruby-debug', :platforms => [:mri_18]
+end
 
 gem 'unicode', '~> 0.4', :platforms => [:mri, :rbx, :mswin, :mingw]

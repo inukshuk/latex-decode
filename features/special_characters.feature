@@ -11,6 +11,7 @@ Feature: Decode LaTeX special characters
     | \\\&                 | &       |
     | \\#                  | #       |
     | \\$                  | $       |
+    | \\;                  | ;       |
     | \\%                  | %       |
     | \\{                  | {       |
     | \\}                  | }       |

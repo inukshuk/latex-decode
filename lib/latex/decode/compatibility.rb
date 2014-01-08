@@ -1,16 +1,16 @@
 
 if RUBY_VERSION < "1.9"
   $KCODE = 'U'
-  
+
   module LaTeX
     def self.to_unicode(string)
       string.gsub(/\\?u([\da-f]{4})/i) { |m| [$1.to_i(16)].pack('U') }
     end
   end
-    
+
   def ruby_18; yield; end
   def ruby_19; false; end
-else  
+else
 
   module LaTeX
     def self.to_unicode(string)
@@ -24,14 +24,14 @@ end
 
 if RUBY_PLATFORM == 'java'
   require 'java'
-  
+
   # Use the Java native Unicode normalizer
   module LaTeX
     def self.normalize_C(string)
       java.text.Normalizer.normalize(string, java.text.Normalizer::Form::NFC).to_s
     end
   end
-  
+
 else
   begin
     require 'unicode'
@@ -45,7 +45,7 @@ else
   rescue LoadError
     begin
       require 'active_support/multibyte/chars'
-      
+
       # Use ActiveSupport's normalizer
       module LaTeX
         def self.normalize_C(string)
@@ -73,7 +73,7 @@ module LaTeX
   rescue LoadError
     begin
       require 'math_ml'
-      
+
       def self.to_math_ml(string)
         MathML::String.mathml_latex_parser.parse(string, false)
       end

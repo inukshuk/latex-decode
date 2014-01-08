@@ -16,3 +16,5 @@ end
 
 gem 'unicode', '~> 0.4', :platforms => [:mri, :rbx, :mswin, :mingw]
 gem 'ritex', '~> 1.0.1'
+
+gem 'rubysl', '~> 2.0', :platforms => :rbx

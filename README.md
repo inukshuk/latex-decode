@@ -36,7 +36,7 @@ describe the example above as:
     Feature: Decode LaTeX accents
       As a hacker who works with LaTeX
       I want to be able to decode LaTeX accents
-  
+
       Scenario: A French sentence
         When I decode the string "dipl\\^{o}me d'\\'{e}tudes sup\\'erieures"
         Then the result should be "diplôme d'études supérieures"
@@ -47,7 +47,7 @@ Credits
 Kudos and thanks to all [contributors](https://github.com/inukshuk/latex-decode/contributors)
 who have made LaTeX::Decode possible!
 
-Copyright (C) 2011-2013 [Sylvester Keil](sylvester.keil.or.at)
+Copyright (C) 2011-2014 [Sylvester Keil](sylvester.keil.or.at)
 
 Copyright (C) 2010 François Charette
 

@@ -2,9 +2,9 @@
 
 module LaTeX
   module Decode
-    
+
     class Punctuation < Decoder
-      
+
       @macros = Hash[*%w{
         textendash         –
         textemdash         —
@@ -43,14 +43,14 @@ module LaTeX
       ]].freeze
 
       @map = @macros.merge(@symbols).freeze
-      
+
       @patterns = [
         /\\(#{ @macros.keys.map { |k| Regexp.escape(k) }.compact.join('|') })(?:\{\}|\s+|\b|$)/ou,
         /(-+|`{1,2}|'{1,2})/,
         /()\\([$%;#_&])(\{\})?/,
         /()\\(~)\{\}/
       ].freeze
-      
+
     end
 
   end

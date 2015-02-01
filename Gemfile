@@ -3,13 +3,14 @@ gemspec
 
 group :test do
   gem 'rake'
-  gem 'rspec', '~> 2.13'
-  gem 'cucumber', '~> 1.2'
+  gem 'rspec', '~> 3.0'
+  gem 'cucumber', '~> 1.3'
 end
 
 group :debug do
-	gem 'debugger', :platforms => [:mri_19, :mri_20, :mri_21]
-	gem 'ruby-debug', :platforms => [:mri_18]
+	gem 'debugger', :platforms => :mri_19
+	gem 'byebug', :platforms => :mri if RUBY_VERSION > '2.0'
+
   gem 'rubinius-debugger', :require => false, :platforms => :rbx
   gem 'rubinius-compiler', :require => false, :platforms => :rbx
 end

@@ -48,7 +48,8 @@ module LaTeX
         /\\(#{ @macros.keys.map { |k| Regexp.escape(k) }.compact.join('|') })(?:\{\}|\s+|\b|$)/ou,
         /(-+|`{1,2}|'{1,2})/,
         /()\\([$%;#_&])(\{\})?/,
-        /()\\(~)\{\}/
+        /()\\(~)\{\}/,
+        /()\\( )/
       ].freeze
 
     end

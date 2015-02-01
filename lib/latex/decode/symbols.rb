@@ -2,7 +2,7 @@
 
 module LaTeX
   module Decode
-    
+
     class Symbols < Decoder
       @map = Hash[*%w{
         textcolonmonetary ₡
@@ -216,7 +216,7 @@ module LaTeX
       @patterns = [
         /\\(#{ map.keys.map { |k| Regexp.escape(k) }.join('|') })(?:\{\}|\s+|\b)/ou
       ].freeze
-      
+
     end
 
   end

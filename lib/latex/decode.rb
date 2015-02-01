@@ -26,6 +26,7 @@ require 'latex/decode/diacritics'
 require 'latex/decode/maths'
 require 'latex/decode/punctuation'
 require 'latex/decode/symbols'
+require 'latex/decode/greek'
 
 module LaTeX
 
@@ -43,6 +44,7 @@ module LaTeX
       Decode::Diacritics.decode!(string)
       Decode::Punctuation.decode!(string)
       Decode::Symbols.decode!(string)
+      Decode::Greek.decode!(string)
 
       Decode::Base.strip_braces(string)
 

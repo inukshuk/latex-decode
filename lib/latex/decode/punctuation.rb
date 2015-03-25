@@ -30,6 +30,7 @@ module LaTeX
         textasciicircum    ^
         textbackslash      \\
         textasciitilde     ~
+        textquotesingle    '
       }].freeze
 
       @symbols = Hash[*%w[

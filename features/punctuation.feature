@@ -33,12 +33,14 @@ Feature: Decode LaTeX punctuation directives
 
 
   Scenarios: Punctuation symbols
-    | latex   | unicode | description |
-    | -       | -       | hyphen      |
-    | --      | –       | en-dash     |
-    | ---     | —       | em-dash     |
-    | \\~{}   | ~       | tilde       |
-    | X\\ X   | X X     | space       |
+    | latex              | unicode | description |
+    | -                  | -       | hyphen      |
+    | --                 | –       | en-dash     |
+    | ---                | —       | em-dash     |
+    | \\~{}              | ~       | tilde       |
+    | \\textasciitilde{} | ~       | tilde       |
+    | \\textasciitilde   | ~       | tilde       |
+    | X\\ X              | X X     | space       |
 
   Scenarios: Quotation marks
     | latex   | unicode | description         |

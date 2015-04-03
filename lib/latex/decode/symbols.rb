@@ -4,7 +4,8 @@ module LaTeX
   module Decode
 
     class Symbols < Decoder
-      @map = Hash[*%w{
+
+      @map = Hash[*%W{
         textcolonmonetary ₡
         textlira          ₤
         textnaira         ₦
@@ -211,7 +212,8 @@ module LaTeX
         tone1             ˩
         ss                ß
         ,                 \u2009
-      }].freeze
+      }.map { |s| LaTeX.to_unicode(s) }].freeze
+
 
       @patterns = [
         /\\(#{ map.keys.map { |k| Regexp.escape(k) }.join('|') })(?:\{\}|\s+|\b)/ou

@@ -35,14 +35,17 @@ module LaTeX
       def normalize (string)
         string.gsub!(/\\(?:i|j)\b/) { |m| m == '\\i' ? 'ı' : 'ȷ' }
 
-				# \foo\ bar -> \foo{} bar
+        # \foo\ bar -> \foo{} bar
         string.gsub!(/(\\[a-zA-Z]+)\\(\s+)/, '\1{}\2')
 
-				# Aaaa\o, -> Aaaa\o{},
+        # Aaaa\o, -> Aaaa\o{},
         string.gsub!(/([^{]\\\w)([;,.:%])/, '\1{}\2')
 
-				# \c cb -> \c{cb}
+        # \c cb -> \c{cb}
         string.gsub!(/(\\[^\sij&#\$\{\}_~%])\s+([[:alpha:]]+)\b/i, '\1{\2}')
+
+        # non-breaking spaces
+        string.gsub!(/(\A|[^\\])~/, LaTeX.to_unicode("\\1\u00a0"))
 
         string
       end

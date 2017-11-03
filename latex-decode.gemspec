@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.homepage    = 'http://github.com/inukshuk/latex-decode'
   s.summary     = 'Decodes LaTeX to Unicode.'
   s.description = 'Decodes strings formatted in LaTeX to equivalent Unicode strings.'
-  s.license     = 'GPL-3'
+  s.license     = 'GPL-3.0'
 
   if RUBY_PLATFORM =~ /java/
     s.platform    = 'java'

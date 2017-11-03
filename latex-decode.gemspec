@@ -17,7 +17,6 @@ Gem::Specification.new do |s|
   if RUBY_PLATFORM =~ /java/
     s.platform    = 'java'
   else
-    s.add_dependency('unicode', '~> 0.4')
     s.platform    = 'ruby'
   end
 

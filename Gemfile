@@ -15,7 +15,5 @@ group :debug do
   gem 'rubinius-compiler', :require => false, :platforms => :rbx
 end
 
-gem 'unicode', '~> 0.4', :platforms => [:mri, :rbx, :mswin, :mingw]
 gem 'ritex', '~> 1.0.1'
-
 gem 'rubysl', '~> 2.0', :platforms => :rbx

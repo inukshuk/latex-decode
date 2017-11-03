@@ -33,27 +33,35 @@ if RUBY_PLATFORM == 'java'
   end
 
 else
-  begin
-    require 'unicode'
-
-    # Use the Unicode gem
+  if RUBY_VERSION >= '2.4'
     module LaTeX
       def self.normalize_C(string)
-        Unicode::normalize_C(string)
+        string.unicode_normalize(:nfc)
       end
     end
-  rescue LoadError
+  else
     begin
-      require 'active_support/multibyte/chars'
+      require 'unicode'
 
-      # Use ActiveSupport's normalizer
+      # Use the Unicode gem
       module LaTeX
         def self.normalize_C(string)
-          ActiveSupport::Multibyte::Chars.new(string).normalize(:c).to_s
+          Unicode::normalize_C(string)
         end
       end
     rescue LoadError
-      fail "Failed to load unicode normalizer: please gem install unicode (or active_support)"
+      begin
+        require 'active_support/multibyte/chars'
+
+        # Use ActiveSupport's normalizer
+        module LaTeX
+          def self.normalize_C(string)
+            ActiveSupport::Multibyte::Chars.new(string).normalize(:c).to_s
+          end
+        end
+      rescue LoadError
+        fail "Failed to load unicode normalizer: please gem install unicode (or active_support)"
+      end
     end
   end
 end

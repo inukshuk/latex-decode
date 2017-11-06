@@ -33,7 +33,7 @@ if RUBY_PLATFORM == 'java'
   end
 
 else
-  if RUBY_VERSION >= '2.4'
+  if RUBY_VERSION >= '2.3'
     module LaTeX
       def self.normalize_C(string)
         string.unicode_normalize(:nfc)

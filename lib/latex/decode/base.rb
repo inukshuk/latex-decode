@@ -7,7 +7,7 @@ module LaTeX
       class << self
         attr_reader :patterns, :map
 
-        def inherited (base)
+        def inherited(base)
           subclasses << base
         end
 
@@ -15,11 +15,11 @@ module LaTeX
           @subclasses ||= []
         end
 
-        def decode (string)
+        def decode(string)
           decode!(string.dup)
         end
 
-        def decode! (string)
+        def decode!(string)
           patterns.each do |pattern|
             string.gsub!(pattern) { |m| [$2,map[$1],$3].compact.join }
           end
@@ -32,7 +32,7 @@ module LaTeX
 
       module_function
 
-      def normalize (string)
+      def normalize(string)
         string.gsub!(/\\(?:i|j)\b/) { |m| m == '\\i' ? 'ı' : 'ȷ' }
 
         # \foo\ bar -> \foo{} bar
@@ -50,7 +50,7 @@ module LaTeX
         string
       end
 
-      def strip_braces (string)
+      def strip_braces(string)
         string.gsub!(/(^|[^\\])([\{\}]+)/, '\1')
         string.gsub!(/\\(\{|\})/, '\1')
         string

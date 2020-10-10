@@ -31,7 +31,7 @@ require 'latex/decode/greek'
 module LaTeX
 
   class << self
-    def decode (string)
+    def decode(string)
       return string unless string.respond_to?(:to_s)
 
       string = string.is_a?(String) ? string.dup : string.to_s

@@ -6,7 +6,7 @@ module LaTeX
         /\$([^\$]+)\$/
       ].freeze
 
-      def self.decode! (string)
+      def self.decode!(string)
         patterns.each do |pattern|
           string.gsub!(pattern) do
             LaTeX.to_math_ml($1)

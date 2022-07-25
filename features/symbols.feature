@@ -12,10 +12,3 @@ Feature: Decode LaTeX symbol directives
     | \\uparrow            | ↑       |
     | \\downarrow          | ↓       |
     | \\rightarrow         | →       |
-
-  Scenarios: Whitespace
-    | latex | unicode | description        |
-    | x\\,x | x x     | small space        |
-    | x~x   | x x     | non-breaking space |
-    | ~x    |  x      | non-breaking space |
-

@@ -8,7 +8,6 @@ Gem::Specification.new do |s|
   s.name        = 'latex-decode'
   s.version     = LaTeX::Decode::VERSION.dup
   s.authors     = ['Sylvester Keil']
-  s.email       = ['http://sylvester.keil.or.at']
   s.homepage    = 'http://github.com/inukshuk/latex-decode'
   s.summary     = 'Decodes LaTeX to Unicode.'
   s.description = 'Decodes strings formatted in LaTeX to equivalent Unicode strings.'

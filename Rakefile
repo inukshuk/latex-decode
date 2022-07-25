@@ -29,13 +29,10 @@ Cucumber::Rake::Task.new(:cucumber)
 
 task :release do |t|
   system "gem build latex-decode.gemspec"
-  system "git tag #{LaTeX::Decode::VERSION}"
+  system "git tag v#{LaTeX::Decode::VERSION}"
   system "git push --tags"
   system "gem push latex-decode-#{LaTeX::Decode::VERSION}.gem"
   system "rm latex-decode-#{LaTeX::Decode::VERSION}.gem"
-  system "jgem build latex-decode.gemspec"
-  system "jgem push latex-decode-#{LaTeX::Decode::VERSION}.gem"
-  system "rm latex-decode-#{LaTeX::Decode::VERSION}-java.gem"
 end
 
 task :default => :cucumber

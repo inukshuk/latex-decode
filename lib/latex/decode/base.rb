@@ -7,6 +7,10 @@ module LaTeX
       class << self
         attr_reader :patterns, :map
 
+        def id
+          name.split('::').last.downcase.to_sym
+        end
+
         def inherited(base)
           subclasses << base
         end

@@ -30,21 +30,28 @@ require 'latex/decode/greek'
 
 module LaTeX
 
+  @decoders = [
+    Decode::Maths,
+    Decode::Accents,
+    Decode::Diacritics,
+    Decode::Punctuation,
+    Decode::Symbols,
+    Decode::Greek
+  ]
+
   class << self
-    def decode(string)
+    attr_reader :decoders
+
+    def decode(string, options = {})
       return string unless string.respond_to?(:to_s)
 
       string = string.is_a?(String) ? string.dup : string.to_s
 
       Decode::Base.normalize(string)
 
-      Decode::Maths.decode!(string)
-
-      Decode::Accents.decode!(string)
-      Decode::Diacritics.decode!(string)
-      Decode::Punctuation.decode!(string)
-      Decode::Symbols.decode!(string)
-      Decode::Greek.decode!(string)
+      decoders.each do |d|
+        d.decode! string unless options[d.id] == false
+      end
 
       Decode::Base.strip_braces(string)
 

@@ -13,6 +13,7 @@ Gem::Specification.new do |s|
   s.description = 'Decodes strings formatted in LaTeX to equivalent Unicode strings.'
   s.license     = 'GPL-3.0-or-later'
   s.platform    = 'ruby'
+  s.required_ruby_version = '>= 1.8'
 
   s.files        = `git ls-files`.split("\n")
   s.test_files   = `git ls-files -- {test,spec,features}/*`.split("\n")

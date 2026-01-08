@@ -53,7 +53,7 @@ module LaTeX
         d.decode! string unless options[d.id] == false
       end
 
-      Decode::Base.strip_braces(string)
+      Decode::Base.strip_braces(string) unless options[:strip_braces] == false
 
       LaTeX.normalize_C(string)
     end

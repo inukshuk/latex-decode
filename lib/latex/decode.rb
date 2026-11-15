@@ -3,6 +3,7 @@
 require 'latex/decode/version'
 require 'latex/decode/compatibility'
 require 'latex/decode/base'
+require 'latex/decode/maths'
 
 require 'latex/decode/accents'
 require 'latex/decode/diacritics'
@@ -26,8 +27,16 @@ module LaTeX
     def decode(string, options = {})
       return string unless string.respond_to?(:to_s)
 
-      string = string.is_a?(String) ? string.dup : string.to_s
+      decoded = Decode::Maths.split(string.to_s).map { |segment|
+        segment.is_a?(Decode::Maths::Span) ? segment.to_s : decode_text(segment, options)
+      }.join
 
+      LaTeX.normalize_C(decoded)
+    end
+
+    private
+
+    def decode_text(string, options)
       Decode::Base.normalize(string)
 
       decoders.each do |d|
@@ -36,7 +45,7 @@ module LaTeX
 
       Decode::Base.strip_braces(string) unless options[:strip_braces] == false
 
-      LaTeX.normalize_C(string)
+      string
     end
   end
 end

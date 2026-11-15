@@ -17,6 +17,37 @@ Quickstart
     >> LaTeX.decode "dipl\\^{o}me d'\\'{e}tudes sup\\'erieures"
     => "diplôme d'études supérieures"
 
+Math
+----
+Math in `$…$`, `\(…\)`, `$$…$$` or `\[…\]`
+is converted to Unicode if all of it can be represented,
+which covers most math found in bibliographies:
+Greek letters and symbols, sub- and superscripts,
+font letters like `\mathbb`, accents, fractions and roots.
+
+    >> LaTeX.decode '$\alpha$-decay of $^{13}$C'
+    => "α-decay of ¹³C"
+    >> LaTeX.decode 'Sorting in $O(n \log n)$ on $\mathbb{R}^n$'
+    => "Sorting in O(n log n) on ℝⁿ"
+
+Math that cannot be converted completely is kept as it is,
+including the delimiters,
+so that it can still be rendered,
+for example, by MathJax or KaTeX.
+Unicode has no subscript f, for instance:
+
+    >> LaTeX.decode 'Effective temperature $T_{\mathrm{eff}}$'
+    => "Effective temperature $T_{\\mathrm{eff}}$"
+
+To keep all math as it is always, pass `math: false`:
+
+    >> LaTeX.decode '$\alpha$-decay', math: false
+    => "$\\alpha$-decay"
+
+Math nested in text inside math,
+like `$a \text{ if $b$} c$`,
+is not currently supported.
+
 
 Issues
 ------

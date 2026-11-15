@@ -11,14 +11,6 @@ module LaTeX
           name.split('::').last.downcase.to_sym
         end
 
-        def inherited(base)
-          subclasses << base
-        end
-
-        def subclasses
-          @subclasses ||= []
-        end
-
         def decode(string)
           decode!(string.dup)
         end

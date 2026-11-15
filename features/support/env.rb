@@ -1,11 +1,6 @@
 begin
   require 'simplecov'
-rescue LoadError
-  # ignore
-end
-
-begin
-  require 'debug'
+  SimpleCov.start
 rescue LoadError
   # ignore
 end

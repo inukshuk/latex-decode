@@ -1,7 +1,6 @@
 LaTeX::Decode
 =============
-[![ci](https://github.com/inukshuk/latex-decode/actions/workflows/ci.yml/badge.svg)](https://github.com/inukshuk/latex-decode/actions/workflows/ci.yml)
-[![coverage](https://coveralls.io/repos/github/inukshuk/latex-decode/badge.svg?branch=main)](https://coveralls.io/github/inukshuk/latex-decode?branch=main)
+[![CI](https://github.com/inukshuk/latex-decode/actions/workflows/ci.yml/badge.svg)](https://github.com/inukshuk/latex-decode/actions/workflows/ci.yml)
 
 LaTeX::Decode is a Ruby gem to convert LaTeX input to Unicode.
 Its original use was as an input filter for [BibTeX-Ruby][]

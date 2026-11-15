@@ -2,6 +2,6 @@
 
 module LaTeX
   module Decode
-    VERSION = '0.4.2'.freeze
+    VERSION = '0.5.0'.freeze
   end
 end

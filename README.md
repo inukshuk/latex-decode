@@ -1,6 +1,7 @@
 LaTeX::Decode
 =============
 [![CI](https://github.com/inukshuk/latex-decode/actions/workflows/ci.yml/badge.svg)](https://github.com/inukshuk/latex-decode/actions/workflows/ci.yml)
+[![Gem Version](https://badge.fury.io/rb/latex-decode.svg)](https://badge.fury.io/rb/latex-decode)
 
 LaTeX::Decode is a Ruby gem to convert LaTeX input to Unicode.
 Its original use was as an input filter for [BibTeX-Ruby][]
@@ -10,7 +11,7 @@ are based on François Charette's equivalent Perl module [LaTeX::Decode][].
 
 Quickstart
 ----------
-    $ [sudo] gem install latex-decode
+    $ gem install latex-decode
     $ irb
     >> require 'latex/decode'
     >> LaTeX.decode "dipl\\^{o}me d'\\'{e}tudes sup\\'erieures"
@@ -19,7 +20,8 @@ Quickstart
 
 Issues
 ------
-Please use the tracker of the project's [repository][] to report any issues.
+Please use the tracker of the project's [repository][]
+to report any issues.
 When describing intended behaviour,
 please use the syntax of the Cucumber features used by LaTeX::Decode.
 For instance, you could describe the example above as:
@@ -35,13 +37,14 @@ For instance, you could describe the example above as:
 
 Credits
 -------
-Kudos and thanks to all [contributors][] who have made LaTeX::Decode possible!
+Kudos and thanks to all [contributors][]
+who have made LaTeX::Decode possible!
 
-Copyright (C) 2011-2022 Sylvester Keil
+Copyright (C) 2011-2026 Sylvester Keil\
 Copyright (C) 2010 François Charette
 
 
-[BibTeXRuby]: http://rubygems.org/gems/bibtex-ruby
+[BibTeX-Ruby]: https://rubygems.org/gems/bibtex-ruby
 [LaTeX::Decode]: https://github.com/fc7/LaTeX-Decode
 
 [repository]: https://github.com/inukshuk/latex-decode 

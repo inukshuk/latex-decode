@@ -19,6 +19,7 @@ module LaTeX
         mu         μ
         nu         ν
         xi         ξ
+        pi         π
         rho        ρ
         sigma      σ
         tau        τ
@@ -41,6 +42,7 @@ module LaTeX
         Mu         Μ
         Nu         Ν
         Xi         Ξ
+        Pi         Π
         Rho        Ρ
         Sigma      Σ
         Tau        Τ

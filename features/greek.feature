@@ -11,3 +11,9 @@ Feature: Decode LaTeX Greek Letters
     | \\alpha              | α       |
     | \\lambda             | λ       |
     | \\Lambda             | Λ       |
+    | \\pi                 | π       |
+    | \\Pi                 | Π       |
+
+  Scenario: Capital Delta is the Greek letter, not the increment sign
+    When I decode the string '\Delta'
+    Then I should get '' + U+0394 + ''

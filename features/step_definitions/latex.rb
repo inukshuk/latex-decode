@@ -2,8 +2,16 @@ When /^I decode the string ('|")(.*)\1$/ do |quote,string|
   @result = LaTeX.decode(string)
 end
 
+When /^I decode the string ('|")(.*)\1 keeping math as TeX$/ do |quote,string|
+  @result = LaTeX.decode(string, math: false)
+end
+
 When /^I decode the following string:$/ do |string|
   @result = LaTeX.decode(string)
+end
+
+When /^I decode the following string keeping math as TeX:$/ do |string|
+  @result = LaTeX.decode(string, math: false)
 end
 
 When /^I decode (\d+) repetitions of ('|")(.*)\2 within (\d+) seconds?$/ do |n,quote,string,seconds|
@@ -18,6 +26,10 @@ end
 
 Then /^the result should be the following string:$/ do |value|
   expect(@result).to eq(value)
+end
+
+Then /^the code points should be ((?:U\+\h{4,} ?)+)$/ do |codes|
+  expect(@result.codepoints).to eq(codes.scan(/U\+(\h+)/).flatten.map(&:hex))
 end
 
 # For whitespace or other characters that are hard to read in source code:

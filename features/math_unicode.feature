@@ -50,6 +50,8 @@ Feature: Convert LaTeX math to Unicode
       | $x^*$           | x*      |
       | $90^\\circ$     | 90°     |
       | $x^{a b}$       | xᵃᵇ     |
+      | $x^23$          | x²3     |
+      | $x_ab$          | xₐb     |
       | $\\ell^{\\prime -}$ | ℓ′⁻ |
       | $C\\sp*$        | C*      |
       | $x\\sb 2$       | x₂      |

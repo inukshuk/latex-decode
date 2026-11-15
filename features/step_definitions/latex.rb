@@ -6,6 +6,10 @@ When /^I decode the string ('|")(.*)\1 keeping math as TeX$/ do |quote,string|
   @result = LaTeX.decode(string, math: false)
 end
 
+When /^I decode the string ('|")(.*)\1 without (\w+)$/ do |quote,string,option|
+  @result = LaTeX.decode(string, option.to_sym => false)
+end
+
 When /^I decode the following string:$/ do |string|
   @result = LaTeX.decode(string)
 end

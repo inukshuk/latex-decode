@@ -13,6 +13,8 @@ require 'latex/decode/maths'
 
 module LaTeX
 
+  NBSP = 0xA0.chr(Encoding::UTF_8).freeze
+
   @decoders = [
     Decode::Accents,
     Decode::Diacritics,
@@ -35,12 +37,15 @@ module LaTeX
         end
       }.join
 
-      LaTeX.normalize_C(decoded)
+      # ASCII is always in NFC.
+      decoded.ascii_only? ? decoded : LaTeX.normalize_C(decoded)
     end
 
     private
 
     def decode_text(string, options)
+      return decode_plain_text(string, options) unless string.include?('\\')
+
       Decode::Base.normalize(string)
 
       decoders.each do |d|
@@ -49,6 +54,16 @@ module LaTeX
 
       Decode::Base.strip_braces(string) unless options[:strip_braces] == false
 
+      string
+    end
+
+    # Without a backslash, only non-breaking spaces, dash and quote
+    # ligatures and braces can be decoded; this is equivalent to,
+    # but much faster than, the full decode_text.
+    def decode_plain_text(string, options)
+      string.tr!('~', NBSP)
+      Decode::Punctuation.decode_ligatures!(string) unless options[:punctuation] == false
+      string.delete!('{}') unless options[:strip_braces] == false
       string
     end
   end

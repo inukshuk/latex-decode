@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #--
 # LaTeX::Decode
 # Copyright (C) 2011-2013 Sylvester Keil <sylvester.keil.or.at>
@@ -23,7 +25,6 @@ require 'latex/decode/base'
 
 require 'latex/decode/accents'
 require 'latex/decode/diacritics'
-require 'latex/decode/maths'
 require 'latex/decode/punctuation'
 require 'latex/decode/symbols'
 require 'latex/decode/greek'
@@ -31,7 +32,6 @@ require 'latex/decode/greek'
 module LaTeX
 
   @decoders = [
-    Decode::Maths,
     Decode::Accents,
     Decode::Diacritics,
     Decode::Punctuation,

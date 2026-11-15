@@ -1,16 +1,14 @@
 source 'https://rubygems.org'
 gemspec
 
-group :test do
+group :development, :test do
   gem 'rake'
-  gem 'rspec'
   gem 'cucumber'
-  gem 'simplecov', platform: 'mri'
-  gem 'simplecov-lcov', platform: 'mri'
+  gem 'rspec-expectations'
+  gem 'debug', require: false, platforms: :mri
 end
 
-group :debug do
-	gem 'debug', platform: 'mri'
+group :coverage do
+  gem 'simplecov', '>= 1.3', require: false
+  gem 'simplecov-lcov', require: false
 end
-
-gem 'ritex', '~> 1.0.1'

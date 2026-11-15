@@ -1,7 +1,9 @@
 Gemfile.lock
 .ruby-version
 .rbx
-.ruby-version
 *swp
 .bundle
 coverage
+pkg
+*.gem
+.DS_Store

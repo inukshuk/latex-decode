@@ -12,3 +12,7 @@ Feature: Decode LaTeX symbol directives
     | \\uparrow            | ↑       |
     | \\downarrow          | ↓       |
     | \\rightarrow         | →       |
+
+  Scenario: \set is not the empty set
+    When I decode the string '\set'
+    Then the result should be '\set'

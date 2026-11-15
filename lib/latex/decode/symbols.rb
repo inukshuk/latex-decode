@@ -30,8 +30,6 @@ module LaTeX
         partial           ∂
         exists            ∃
         nexists           ∄
-        set               ∅
-        Delta             ∆
         nabla             ∇
         in                ∈
         notin             ∉

@@ -3,13 +3,13 @@
 require 'latex/decode/version'
 require 'latex/decode/compatibility'
 require 'latex/decode/base'
-require 'latex/decode/maths'
 
 require 'latex/decode/accents'
 require 'latex/decode/diacritics'
 require 'latex/decode/punctuation'
 require 'latex/decode/symbols'
 require 'latex/decode/greek'
+require 'latex/decode/maths'
 
 module LaTeX
 
@@ -28,7 +28,11 @@ module LaTeX
       return string unless string.respond_to?(:to_s)
 
       decoded = Decode::Maths.split(string.to_s).map { |segment|
-        segment.is_a?(Decode::Maths::Span) ? segment.to_s : decode_text(segment, options)
+        if segment.is_a?(Decode::Maths::Span)
+          options[:math] == false ? segment.to_s : Decode::Maths.to_unicode(segment)
+        else
+          decode_text(segment, options)
+        end
       }.join
 
       LaTeX.normalize_C(decoded)

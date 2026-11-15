@@ -14,6 +14,7 @@ Gem::Specification.new do |s|
   s.metadata = {
     'source_code_uri' => 'https://github.com/inukshuk/latex-decode',
     'bug_tracker_uri' => 'https://github.com/inukshuk/latex-decode/issues',
+    'changelog_uri' => 'https://github.com/inukshuk/latex-decode/blob/main/CHANGELOG.md',
     'rubygems_mfa_required' => 'true'
   }
 

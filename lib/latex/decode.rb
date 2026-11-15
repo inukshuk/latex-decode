@@ -18,7 +18,7 @@ module LaTeX
     Decode::Punctuation,
     Decode::Symbols,
     Decode::Greek
-  ]
+  ].freeze
 
   class << self
     attr_reader :decoders

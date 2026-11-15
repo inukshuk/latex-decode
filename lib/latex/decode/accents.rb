@@ -13,21 +13,11 @@ module LaTeX
         .  \u0307
         '' \u0308
         "  \u0308  
-      }.map { |s| LaTeX.to_unicode(s) }].freeze
+      }].freeze
 
       @patterns = [
-        ruby_18 {
-          /\\(#{ map.keys.map { |k| Regexp.escape(k) }.join('|') })\{([[:alpha:]]+)\}/ou
-        } ||
-        ruby_19 {
-          /\\(#{ map.keys.map { |k| Regexp.escape(k) }.join('|') })\{(\p{L}\p{M}*)\}/ou
-        },
-        ruby_18 {
-          /\\(#{ map.keys.map { |k| Regexp.escape(k) }.join('|') })([[:alpha:]])/ou          
-        } ||
-        ruby_19 {
-          /\\(#{ map.keys.map { |k| Regexp.escape(k) }.join('|') })(\p{L}\p{M}*)/ou
-        }
+        /\\(#{ map.keys.map { |k| Regexp.escape(k) }.join('|') })\{(\p{L}\p{M}*)\}/ou,
+        /\\(#{ map.keys.map { |k| Regexp.escape(k) }.join('|') })(\p{L}\p{M}*)/ou
       ].freeze
       
     end

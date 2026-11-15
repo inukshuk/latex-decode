@@ -49,7 +49,7 @@ module LaTeX
         string.gsub!(/(\\[^\sij&#\$\{\}_~%])\s+([[:alpha:]]+)\b/i, '\1{\2}')
 
         # non-breaking spaces
-        string.gsub!(/(\A|[^\\])~/, LaTeX.to_unicode("\\1\u00a0"))
+        string.gsub!(/(\A|[^\\])~/, "\\1\u00a0")
 
         string
       end

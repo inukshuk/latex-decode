@@ -212,7 +212,7 @@ module LaTeX
         tone1             ˩
         ss                ß
         ,                 \u202F
-      }.map { |s| LaTeX.to_unicode(s) }].freeze
+      }].freeze
 
 
       @patterns = [

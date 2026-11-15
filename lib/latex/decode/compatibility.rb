@@ -1,27 +1,3 @@
-
-if RUBY_VERSION < "1.9"
-  $KCODE = 'U'
-
-  module LaTeX
-    def self.to_unicode(string)
-      string.gsub(/\\?u([\da-f]{4})/i) { |m| [$1.to_i(16)].pack('U') }
-    end
-  end
-
-  def ruby_18; yield; end
-  def ruby_19; false; end
-else
-
-  module LaTeX
-    def self.to_unicode(string)
-      string
-    end
-  end
-
-  def ruby_18; false; end
-  def ruby_19; yield; end
-end
-
 if RUBY_PLATFORM == 'java'
   require 'java'
 
@@ -33,35 +9,9 @@ if RUBY_PLATFORM == 'java'
   end
 
 else
-  if RUBY_VERSION >= '2.3'
-    module LaTeX
-      def self.normalize_C(string)
-        string.unicode_normalize(:nfc)
-      end
-    end
-  else
-    begin
-      require 'unicode'
-
-      # Use the Unicode gem
-      module LaTeX
-        def self.normalize_C(string)
-          Unicode::normalize_C(string)
-        end
-      end
-    rescue LoadError
-      begin
-        require 'active_support/multibyte/chars'
-
-        # Use ActiveSupport's normalizer
-        module LaTeX
-          def self.normalize_C(string)
-            ActiveSupport::Multibyte::Chars.new(string).normalize(:c).to_s
-          end
-        end
-      rescue LoadError
-        fail "Failed to load unicode normalizer: please gem install unicode (or active_support)"
-      end
+  module LaTeX
+    def self.normalize_C(string)
+      string.unicode_normalize(:nfc)
     end
   end
 end

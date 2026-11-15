@@ -17,8 +17,13 @@ module LaTeX
 
         def decode!(string)
           patterns.each do |pattern|
-            string.gsub!(pattern) { |m| [$2,map[$1],$3].compact.join }
+            decode_pattern!(string, pattern)
           end
+          string
+        end
+
+        def decode_pattern!(string, pattern)
+          string.gsub!(pattern) { |m| [$2,map[$1],$3].compact.join }
           string
         end
       end

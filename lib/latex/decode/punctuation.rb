@@ -45,13 +45,20 @@ module LaTeX
 
       @map = @macros.merge(@symbols).freeze
 
+      # Dash and quote ligatures, the only punctuation without a backslash.
+      LIGATURES = /(-+|`{1,2}|'{1,2})/
+
       @patterns = [
         /\\(#{ @macros.keys.map { |k| Regexp.escape(k) }.compact.join('|') })(?:\{\}|\s+|\b|$)/ou,
-        /(-+|`{1,2}|'{1,2})/,
+        LIGATURES,
         /()\\([$%;#_&])(\{\})?/,
         /()\\(~)\{\}/,
         /()\\( )/
       ].freeze
+
+      def self.decode_ligatures!(string)
+        decode_pattern!(string, LIGATURES)
+      end
 
     end
 

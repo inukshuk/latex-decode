@@ -12,6 +12,7 @@
 ### Changed
 - Ruby 3.2 or later is required.
 - `LaTeX.decoders` is frozen.
+- Decoding is about three times faster for text without LaTeX commands.
 
 ### Removed
 - MathML conversion via the `ritex` or `math_ml` gems.

@@ -25,8 +25,16 @@ module LaTeX
         '\[' => '\]'
       }.freeze
 
-      CLOSE_PATTERNS = CLOSE.transform_values { |close|
-        Regexp.new(Regexp.escape(close))
+      # Text up to the next math delimiter; escape sequences
+      # (e.g., \$) are taken as a whole.
+      TEXT = /(?:[^\\$]|\\[^(\[])+/m
+
+      # Math bodies up to (and including) the closing delimiter.
+      BODIES = {
+        '$$' => /((?:[^\\$]|\\.|\$(?!\$))*+)\$\$/m,
+        '$' => /((?:[^\\$]|\\.)*+)\$/m,
+        '\(' => /((?:[^\\]|\\[^)])*+)\\\)/m,
+        '\[' => /((?:[^\\]|\\[^\]])*+)\\\]/m
       }.freeze
 
       class << self
@@ -44,47 +52,27 @@ module LaTeX
           scanner = StringScanner.new(string)
 
           until scanner.eos?
-            open = scanner.scan(OPEN)
-
-            if open.nil?
-              text << scan_token(scanner)
-            elsif !unclosed[open] && (body = scan_body(scanner, CLOSE_PATTERNS[open]))
-              segments << text unless text.empty?
-              segments << Span.new(open, body, CLOSE[open])
-              text = +''
+            if (run = scanner.scan(TEXT))
+              text << run
+            elsif (open = scanner.scan(OPEN))
+              if !unclosed[open] && scanner.scan(BODIES[open])
+                segments << text unless text.empty?
+                segments << Span.new(open, scanner[1], CLOSE[open])
+                text = +''
+              else
+                # If there is no closing delimiter after this one,
+                # there is none after any later one either.
+                unclosed[open] = true
+                text << open
+              end
             else
-              # If there is no closing delimiter after this one,
-              # there is none after any later one either.
-              unclosed[open] = true
-              text << open
+              # A backslash at the very end.
+              text << scanner.getch
             end
           end
 
           segments << text unless text.empty?
           segments
-        end
-
-        private
-
-        # Returns the math up to the closing delimiter, or nil
-        # (leaving the scanner in place) if there is none.
-        def scan_body(scanner, close)
-          start = scanner.pos
-          body = +''
-
-          until scanner.eos?
-            return body if scanner.scan(close)
-            body << scan_token(scanner)
-          end
-
-          scanner.pos = start
-          nil
-        end
-
-        # Scans an escape sequence, a run of ordinary characters,
-        # or a single character.
-        def scan_token(scanner)
-          scanner.scan(/\\.|[^\\$]+/m) || scanner.getch
         end
       end
 
@@ -216,6 +204,9 @@ module LaTeX
 
         PRIMES = { 1 => '′', 2 => '″', 3 => '‴' }.freeze
 
+        # Characters that convert to themselves.
+        ORDINARY = /[a-zA-Z0-9()\[\]=+<>,.\/|!?:;*@"]+/
+
         SUPERSCRIPTS = {
           '0123456789+−=()' => '⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻⁼⁽⁾',
           'abcdefghijklmnoprstuvwxyz' => 'ᵃᵇᶜᵈᵉᶠᵍʰⁱʲᵏˡᵐⁿᵒᵖʳˢᵗᵘᵛʷˣʸᶻ',
@@ -294,15 +285,21 @@ module LaTeX
         def convert
           result = sequence
           raise Unsupported unless @scanner.eos?
-          result.gsub(/\s+/, ' ').gsub(SPACING, '\1').strip
+
+          result.tr_s!(" \t\r\n\f\v", ' ')
+          result.gsub!(SPACING, '\1') unless result.ascii_only?
+          result.strip!
+          result
         end
 
         private
 
         # Converts everything up to the end or a closing brace.
+        # Runs of ordinary characters are taken as they are; arguments
+        # (e.g., of scripts) are single atoms instead.
         def sequence
           result = +''
-          result << atom until @scanner.eos? || @scanner.check(/\}/)
+          result << (@scanner.scan(ORDINARY) || atom) until @scanner.eos? || @scanner.check(/\}/)
           result
         end
 
